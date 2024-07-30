@@ -128,27 +128,30 @@ local theme = lush(function(injected_functions)
     IncSearch {
       cterm = display.rev, gui = display.rev,
       fg = colors.orange, bg = colors.gray0,
-    },                                                     -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-    CurSearch { IncSearch },                               -- Highlighting a search pattern under the cursor (see 'hlsearch')
-    lCursor { Cursor },                                    -- Character under the cursor when |language-mapping| is used (see 'guicursor')
-    CursorIM { Cursor },                                   -- Like Cursor, but used when in IME mode |CursorIM|
-    CursorLine { PastelboxBg2 },                           -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
-    CursorColumn { CursorLine },                           -- Screen-column at the cursor, when 'cursorcolumn' is set.
-    Directory { PastelboxGreen },                          -- Directory names (and other special names in listings)
-    DiffAdd { fg = colors.gray0, bg = colors.green },      -- Diff mode: Added line |diff.txt|
-    DiffChange { fg = colors.gray0, bg = colors.green },   -- Diff mode: Changed line |diff.txt|
-    DiffDelete { fg = colors.gray0, bg = colors.red },     -- Diff mode: Deleted line |diff.txt|
-    DiffText { fg = colors.gray0, bg = colors.yellow },    -- Diff mode: Changed text within a changed line |diff.txt|
-    NonText { fg = colors.gray4 },                         -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-    EndOfBuffer { NonText },                               -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
-    TermCursor { cterm = display.rev, gui = display.rev }, -- Cursor in a focused terminal
-    TermCursorNC { link = link.clear },                    -- Cursor in an unfocused terminal
-    ErrorMsg { fg = colors.gray0, bg = colors.red },       -- Error messages on the command line
-    Winseparator { fg = colors.gray3, bg = colors.gray0 }, -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
-    VertSplit { Winseparator },                            -- Column separating vertically split windows
-    Folded { fg = colors.gray5, bg = colors.gray2 },       -- Line used for closed folds
-    FoldColumn { Folded },                                 -- 'foldcolumn'
-    SignColumn { PastelboxBg2 },                           -- Column where |signs| are displayed
+    },                            -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    CurSearch { IncSearch },      -- Highlighting a search pattern under the cursor (see 'hlsearch')
+    lCursor { Cursor },           -- Character under the cursor when |language-mapping| is used (see 'guicursor')
+    CursorIM { Cursor },          -- Like Cursor, but used when in IME mode |CursorIM|
+    CursorLine { PastelboxBg2 },  -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
+    CursorColumn { CursorLine },  -- Screen-column at the cursor, when 'cursorcolumn' is set.
+    Directory { PastelboxGreen }, -- Directory names (and other special names in listings)
+    Added { PastelboxGreen },
+    Changed { PastelboxYellow },
+    Removed { PastelboxRed },
+    DiffAdd { cterm = display.rev, gui = display.rev, bg = colors.gray0, Added },      -- Diff mode: Added line |diff.txt|
+    DiffChange { cterm = display.rev, gui = display.rev, bg = colors.gray0, Added },   -- Diff mode: Changed line |diff.txt|
+    DiffDelete { cterm = display.rev, gui = display.rev, bg = colors.gray0, Removed }, -- Diff mode: Deleted line |diff.txt|
+    DiffText { cterm = display.rev, gui = display.rev, bg = colors.gray0, Changed },   -- Diff mode: Changed text within a changed line |diff.txt|
+    NonText { fg = colors.gray4 },                                                     -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    EndOfBuffer { NonText },                                                           -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
+    TermCursor { cterm = display.rev, gui = display.rev },                             -- Cursor in a focused terminal
+    TermCursorNC { link = link.clear },                                                -- Cursor in an unfocused terminal
+    ErrorMsg { fg = colors.gray0, bg = colors.red },                                   -- Error messages on the command line
+    Winseparator { fg = colors.gray3, bg = colors.gray0 },                             -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
+    VertSplit { Winseparator },                                                        -- Column separating vertically split windows
+    Folded { fg = colors.gray5, bg = colors.gray2 },                                   -- Line used for closed folds
+    FoldColumn { Folded },                                                             -- 'foldcolumn'
+    SignColumn { PastelboxBg2 },                                                       -- Column where |signs| are displayed
 
     Search {
       cterm = display.rev, gui = display.rev,
