@@ -498,6 +498,8 @@ local theme = lush(function(injected_functions)
     CmpItemKindVariable { gui = cmp_itm_knd_dsply, PastelboxBlue },
     CmpItemMenu { PastelboxLightGray },
     CmpItemMenuDefault { CmpItemAbbrDefault },
+
+    SnippetTabstop {},
   }
 end)
 
